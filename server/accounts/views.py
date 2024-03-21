@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-def login(response):
-    return render(response, '../client/public/index.html')
+def login(request):
+    return render(request, '../client/public/index.html')
+
+def signup():
+    pass
