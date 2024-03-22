@@ -6,6 +6,11 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    name: 'chats',
+    component: Chats
+  },
+  {
+    path: '/login',
     name: 'login',
     component: Login
   },
@@ -14,14 +19,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'signup',
     component: Signup
   },
-  {
-    path: '/chats',
-    name: 'chats',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: Chats
-  }
 ]
 
 const router = createRouter({

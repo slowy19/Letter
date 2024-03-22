@@ -13,6 +13,7 @@ export default class InputDefault extends Vue {}
     all: unset;
 
     width: 100%;
+    max-width: 480px;
     border-bottom: 1px solid rgba(221, 221, 221, 1);
     // box-shadow: var(--box-shadow);
     font-size: 24px;

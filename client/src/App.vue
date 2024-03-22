@@ -17,6 +17,11 @@ body {
     text-align: center;
     color: #fff;
     background: #333;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
 }
 
 #app {
