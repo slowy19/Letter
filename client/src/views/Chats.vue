@@ -12,8 +12,9 @@
                     <Item
                         @click="setActive(item)"
                         :isActive="active === item"
-                        v-for="(item, index) in items"
+                        v-for="(item, index) in chatList"
                         :key="index"
+                        :item="item"
                     />
                 </div>
             </div>
@@ -42,8 +43,8 @@
 import InputSearch from '@/components/inputs/InputSearch.vue';
 import Item from '@/components/chats/Item.vue';
 import InputMessage from '@/components/inputs/InputMessage.vue';
-import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent, inject, onMounted, onUnmounted, ref } from 'vue';
+import axios from 'axios'
 
 export default defineComponent({
     name: 'Chats',
@@ -52,46 +53,28 @@ export default defineComponent({
         Item,
         InputMessage,
     },
+    data() {
+        return {
+            chatList: []
+        }
+    },
+    methods: {
+        getChatList() {
+            axios
+                .get('/api/v1/chat-list/')
+                .then(response => {
+                    this.chatList = response.data
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+    },
+    mounted() {
+        this.getChatList()
+    },
     setup() {
         const active = ref(null);
-        const items = ref([
-            {
-                id: 1,
-            },
-            {
-                id: 2,
-            },
-            {
-                id: 3,
-            },
-            {
-                id: 4,
-            },
-            {
-                id: 5,
-            },
-            {
-                id: 6,
-            },
-            {
-                id: 7,
-            },
-            {
-                id: 8,
-            },
-            {
-                id: 9,
-            },
-            {
-                id: 10,
-            },
-            {
-                id: 11,
-            },
-            {
-                id: 12,
-            },
-        ]);
 
         const setActive = (item: any) => {
             active.value = item;
@@ -113,7 +96,7 @@ export default defineComponent({
 
         return {
             active,
-            items,
+            // chatList,
             setActive,
         };
     },

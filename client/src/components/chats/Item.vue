@@ -3,11 +3,12 @@
         <img src="@/assets/icons/avatar.png" alt="Avatar">
         <div class="text">
             <div class="textItem">
-                <span class="name">Alice White</span>
-                <span class="date">8:23</span>
+                <span class="name">{{ item.name }}</span>
+                <span class="date">{{ formatDate(item.createdAt) }}</span>
             </div>
             <div class="textItem">
-                <span class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus sagittis purus pulvinar accumsan. Maecenas vitae lacus mauris. Cras ut aliquam magna. Ut felis turpis, feugiat nec fermentum id, imperdiet.</span>
+                <!-- TODO -->
+                <span class="message">message</span> 
                 <span class="count">2</span>
             </div>
         </div>
@@ -15,23 +16,40 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-
-
-// @Options({
-//     components: {
-//         InputSearch
-//     },
-// })
+import { PropType, defineComponent } from 'vue';
+import { IChatItem } from '@/interfaces/index'
 
 export default defineComponent({
     name: 'Item',
     props: {
         isActive: Boolean,
+        item: {
+            type: Object as PropType<IChatItem>,
+            required: true,
+        }
     },
     methods: {
         handleClick() {
             this.$emit('click', this);
+        },
+        getNormalTime(date: Date) {
+            return new Date(date).toLocaleString('en', { hour: 'numeric', minute: 'numeric' });
+        },
+        getNormalDate(date: Date) {
+            return new Date(date).toLocaleString('en', { month: 'short', day: '2-digit' });
+        },
+        formatDate(date: Date) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня для сравнения
+            const inputDate = new Date(date);
+            inputDate.setHours(0, 0, 0, 0); // Устанавливаем время на начало дня для сравнения
+
+            // Сравниваем даты без учета времени
+            if (today.getTime() === inputDate.getTime()) {
+                return this.getNormalTime(date);
+            } else {
+                return this.getNormalDate(date);
+            }
         },
     },
 })
