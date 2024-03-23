@@ -44,7 +44,7 @@
 import InputSearch from '@/components/inputs/InputSearch.vue';
 import Item from '@/components/chats/Item.vue';
 import InputMessage from '@/components/inputs/InputMessage.vue';
-import { defineComponent, inject, onMounted, onUnmounted, ref } from 'vue';
+import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
 import axios from 'axios'
 import { IChatItem } from '@/interfaces';
 
@@ -59,6 +59,7 @@ export default defineComponent({
         return {
             chatList: [],
             selectedChatItem: null as IChatItem | null,
+            intervalId: null as number | undefined | null,
         }
     },
     methods: {
@@ -76,8 +77,19 @@ export default defineComponent({
             this.selectedChatItem = item;
         },
     },
+    beforeUnmount() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+    },
     mounted() {
-        this.getChatList()
+        // Call getChatList immediately on mount
+        this.getChatList();
+
+        // Set up an interval to call getChatList every 5 seconds
+        this.intervalId = setInterval(() => {
+            this.getChatList();
+        }, 5000);
     },
     setup() {
         const active = ref(null);
