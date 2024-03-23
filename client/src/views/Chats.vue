@@ -28,6 +28,7 @@
             </div>
             <div class="fill" v-bind:class="{ hidden: !active }">
                 <div class="fillHeader">
+                    <!-- <h1 class="fillName">{{ selectedChatItem && selectedChatItem.name }}</h1> -->
                     <h1 class="fillName">Alice White</h1>
                     <span class="status">Online</span>
                 </div>
@@ -45,6 +46,7 @@ import Item from '@/components/chats/Item.vue';
 import InputMessage from '@/components/inputs/InputMessage.vue';
 import { defineComponent, inject, onMounted, onUnmounted, ref } from 'vue';
 import axios from 'axios'
+import { IChatItem } from '@/interfaces';
 
 export default defineComponent({
     name: 'Chats',
@@ -55,7 +57,8 @@ export default defineComponent({
     },
     data() {
         return {
-            chatList: []
+            chatList: [],
+            selectedChatItem: null as IChatItem | null,
         }
     },
     methods: {
@@ -68,7 +71,10 @@ export default defineComponent({
                 .catch(error => {
                     console.log(error);
                 })
-        }
+        },
+        setActive(item: any) {
+            this.selectedChatItem = item;
+        },
     },
     mounted() {
         this.getChatList()

@@ -6,6 +6,7 @@ from django.db.models import Count
 from rest_framework.response import Response
 
 # Create your views here.
+
 class ChatList(APIView):
     def get(self, request, format=None):
         chats = (Chat.objects

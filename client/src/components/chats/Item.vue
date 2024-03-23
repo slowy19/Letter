@@ -4,11 +4,11 @@
         <div class="text">
             <div class="textItem">
                 <span class="name">{{ item.name }}</span>
-                <span class="date">{{ formatDate(item.createdAt) }}</span>
+                <span class="date">{{ formatDate(item.lastMessage.createdAt) }}</span>
             </div>
             <div class="textItem">
+                <span class="message">{{ item.lastMessage.content }}</span> 
                 <!-- TODO -->
-                <span class="message">message</span> 
                 <span class="count">2</span>
             </div>
         </div>
