@@ -1,6 +1,7 @@
 import Chats from '@/views/Chats.vue'
 import Login from '@/views/Login.vue'
 import Signup from '@/views/Signup.vue'
+import Profile from '@/views/Profile.vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/signup',
     name: 'signup',
     component: Signup
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
   },
 ]
 

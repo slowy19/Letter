@@ -29,6 +29,7 @@ import Button from '@/components/Button.vue'
         Button
     },
 })
+
 export default class Login extends Vue {}
 </script>
 
@@ -70,12 +71,6 @@ export default class Login extends Vue {}
                 flex-wrap: wrap;
                 align-items: center;
                 margin-left: 10px;
-
-                .link {
-                    font-size: 20px;
-                    font-weight: 400;
-                    line-height: 37px;
-                }
             }
         }
     }

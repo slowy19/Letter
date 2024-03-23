@@ -72,12 +72,6 @@ export default class Signup extends Vue {}
                 flex-wrap: wrap;
                 align-items: center;
                 margin-left: 10px;
-
-                .link {
-                    font-size: 20px;
-                    font-weight: 400;
-                    line-height: 37px;
-                }
             }
         }
     }
