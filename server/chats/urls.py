@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from chats.views import *
+from chats import views
 
 urlpatterns = [
-    path('/', f)
+    path('chat-list/', views.ChatList.as_view()),
 ]

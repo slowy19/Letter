@@ -8,16 +8,18 @@ class Message(models.Model):
     content = models.TextField(blank = True, null = True)
     chatID = models.ForeignKey('Chat', on_delete = models.CASCADE)
     
+    def __str__(self):
+        return self.content
+    
 class Viewed(models.Model):
     messageID = models.ForeignKey('Message', on_delete = models.CASCADE)
     userID = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
     watchedAt = models.DateTimeField(auto_now_add = True)
     
 class Chat(models.Model):
-    name = models.TextField(default = '')
+    name = models.CharField(max_length = 20, blank=True, null = True)
     createdAt = models.DateTimeField(auto_now_add = True)
     createdBy = models.ForeignKey(CustomUser, null = True, on_delete = models.SET_NULL)
-    messageId = models.ForeignKey(Message, on_delete = models.CASCADE)
     
     def save(self, *args, **kwargs):
         if not self.name:
