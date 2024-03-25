@@ -3,6 +3,7 @@ import Login from '@/views/Login.vue'
 import Signup from '@/views/Signup.vue'
 import Profile from '@/views/Profile.vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import NotFound from '@/views/NotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '/profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/404', 
+    name: 'NotFound',
+    component: NotFound
+  },
+  {
+    path: '/:catchAll(.*)', redirect:'404'
   },
 ]
 
