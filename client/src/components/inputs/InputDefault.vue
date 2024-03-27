@@ -1,19 +1,50 @@
 <template>
-    <input type="text" class="input" />
+    <div class="inputParrent">
+        <Field :name="name" class="input" :placeholder="placeholder" />
+        <ErrorMessage :name="error" class="error" />
+    </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { defineComponent } from 'vue';
+import { Field, ErrorMessage } from 'vee-validate';
 
-export default class InputDefault extends Vue {}
+
+export default defineComponent({
+    name: 'InputDefault',
+    props: {
+        name: {
+            type: String,
+            required: true
+        },
+        error: {
+            type: String,
+            required: true
+        },
+        placeholder: {
+            type: String,
+            required: false
+        },
+    },
+    components: {
+        Field,
+        ErrorMessage
+    }
+})
 </script>
 
 <style scoped lang="scss">
+.inputParrent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .input {
     all: unset;
 
     width: 100%;
-    max-width: 480px;
+    max-width: 500px;
     border-bottom: 1px solid rgba(221, 221, 221, 1);
     // box-shadow: var(--box-shadow);
     font-size: 24px;
@@ -29,5 +60,14 @@ export default class InputDefault extends Vue {}
         line-height: 44px;
         color: rgba(119, 119, 119, 1);
     }
+
+    &.is-invalid {
+        border-bottom: 1px solid rgba(255, 68, 68, 1);
+    }
+}
+
+.error {
+    color: rgba(255, 68, 68, 1);
+    text-align: left;
 }
 </style>

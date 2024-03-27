@@ -1,17 +1,17 @@
 <template>
     <div class="wrapper">
         <h1 class="title">Letter</h1>
-        <div class="form">
+        <Form @submit="onSubmit" :validation-schema="validationSchema" as="div" class="form">
             <div class="inputs">
-                <InputDefault placeholder="Login" />
-                <InputPassword placeholder="Password" />
+                <InputDefault name="login" error="login" placeholder="Login" />
+                <InputPassword name="password" error="password" placeholder="Password" />
                 <div class="flexLinks">
                     <RouterLink to="/signup" class="link">Sign up</RouterLink>
                     <RouterLink to="/" class="link">Remaind password?</RouterLink>
                 </div>
             </div>
             <Button text="Log In" />
-        </div>
+        </Form>
     </div>
 </template>
 
@@ -19,18 +19,45 @@
 import { Options, Vue } from 'vue-class-component';
 import InputDefault from '@/components/inputs/InputDefault.vue';
 import InputPassword from '@/components/inputs/InputPassword.vue';
-import Button from '@/components/Button.vue'
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Button from '@/components/Button.vue';
+import { defineComponent } from 'vue';
+import { object, string } from 'zod';
+import { toTypedSchema } from '@vee-validate/zod';
+import { useForm } from 'vee-validate';
 
-@Options({
+const loginSchema = object({
+    login: string().min(3),
+    password: string().min(8, 'Password must be at least 8 characters'),
+})
+
+const validationSchema = toTypedSchema(loginSchema);
+
+export default defineComponent({
+    name: 'Login',
     components: {
         InputDefault,
         InputPassword,
-        Button
+        Button,
     },
-})
+    mounted() {
+        document.title = 'Login';
+    },
+    setup() {
+        const { handleSubmit } = useForm({
+            validationSchema,
+        });
 
-export default class Login extends Vue {}
+        const onSubmit = handleSubmit((values) => {
+            console.log(values);
+        });
+
+        return {
+            handleSubmit,
+            onSubmit,
+            validationSchema,
+        };
+    },
+});
 </script>
 
 <style scoped lang="scss">

@@ -90,6 +90,8 @@ export default defineComponent({
         this.intervalId = setInterval(() => {
             this.getChatList();
         }, 5000);
+
+        document.title = 'Chats'
     },
     setup() {
         const active = ref(null);

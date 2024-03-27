@@ -5,16 +5,14 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-// import InputSearch from '@/components/inputs/InputSearch.vue';
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue';
 
-// @Options({
-//     components: {
-//         InputSearch
-//     },
-// })
 
-export default class Chats extends Vue {}
+export default defineComponent({
+    name: 'Profile',
+    mounted() {
+        document.title = 'Profile'
+    }
+})
 
 </script>

@@ -4,8 +4,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import axiosInstance from './utils/axios'; 
+import { configure } from 'vee-validate';
 
-const app = createApp(App);
+const app = createApp(App);;
 
 app.use(store);
 app.use(router);

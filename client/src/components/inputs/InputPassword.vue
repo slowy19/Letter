@@ -1,12 +1,17 @@
 <template>
-    <div class="inputDiv">
-        <input :type="inputType" class="input" :placeholder="placeholder" />
-        <img src="@/assets/icons/eye.png" alt="Icon" @click="toggleInputType" :style="{ opacity: isEye ? 1 : 0.3 }">
+    <div class="inputParrent">
+        <div class="inputDiv">
+            <Field :name="name" class="input" :placeholder="placeholder" :type="inputType" />
+            <img src="@/assets/icons/eye.png" alt="Icon" @click="toggleInputType" :style="{ opacity: isEye ? 1 : 0.3 }">
+        </div>
+        <ErrorMessage :name="error" class="error" />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Field, ErrorMessage } from 'vee-validate';
+
 
 export default defineComponent({
     name: 'InputPassword',
@@ -14,8 +19,19 @@ export default defineComponent({
         placeholder: {
             type: String,
             required: false,
-            default: '',
-        }
+        },
+        name: {
+            type: String,
+            required: true,
+        },
+        error: {
+            type: String,
+            required: true,
+        },
+    },
+    components: {
+        Field,
+        ErrorMessage
     },
     data() {
         return {
@@ -36,9 +52,15 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+.inputParrent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 105%;
+}
+
 .inputDiv {
     width: 100%;
-    max-width: 500px;
     border-bottom: 1px solid rgba(221, 221, 221, 1);
     display: flex;
     justify-content: space-between;
@@ -49,7 +71,6 @@ export default defineComponent({
 
     width: 100%;
     max-width: 480px;
-    // box-shadow: var(--box-shadow);
     font-size: 24px;
     font-weight: 400;
     line-height: 44px;
@@ -63,6 +84,10 @@ export default defineComponent({
             line-height: 44px;
             color: rgba(119, 119, 119, 1);
         }
+
+        &.is-invalid {
+            border-bottom: 1px solid rgba(255, 68, 68, 1);
+        }
     }
 
     img {
@@ -74,6 +99,11 @@ export default defineComponent({
         cursor: pointer;
         transition: all .1s ease;
     }
+}
+
+.error {
+    color: rgba(255, 68, 68, 1);
+    text-align: left;
 }
 
 </style>

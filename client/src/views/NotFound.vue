@@ -9,7 +9,10 @@
 import { defineComponent } from 'vue';
 
     export default defineComponent({
-        name: 'NotFound'
+        name: 'NotFound',
+        mounted() {
+            document.title = '404'
+        }
     })
 </script>
 

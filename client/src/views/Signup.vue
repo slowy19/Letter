@@ -1,37 +1,77 @@
 <template>
     <div class="wrapper">
         <h1 class="title">Letter</h1>
-        <div class="form">
+        <Form @submit="onSubmit" :validation-schema="validationSchema" as="div" class="form">
             <div class="inputs">
-                <InputDefault placeholder="Username" />
-                <InputDefault placeholder="Login" />
-                <InputPassword placeholder="Password" />
-                <InputPassword placeholder="Confirm password" />
+                <InputDefault name="username" error="username" placeholder="Username" />
+                <InputDefault name="login" error="login" placeholder="Login" />
+                <InputPassword name="password" error="password" placeholder="Password" />
+                <InputPassword name="confirmPassword" error="confirmPassword" placeholder="Confirm password" />
+
                 <div class="flexLinks">
-                    <RouterLink to="/login" class="link">You have an account?</RouterLink>
+                    <RouterLink to="/login" class="link"
+                        >You have an account?</RouterLink
+                    >
                     <RouterLink to="/login" class="link">Log in</RouterLink>
                 </div>
             </div>
             <Button text="Sign Up" />
-        </div>
+        </Form>
     </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
 import InputDefault from '@/components/inputs/InputDefault.vue';
 import InputPassword from '@/components/inputs/InputPassword.vue';
-import Button from '@/components/Button.vue'
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Button from '@/components/Button.vue';
+import { defineComponent } from 'vue';
+import { object, string } from 'zod';
+import { toTypedSchema } from '@vee-validate/zod';
+import { useForm } from 'vee-validate';
 
-@Options({
+const signupSchema = object({
+    login: string().min(3),
+    password: string().min(8, 'Password must be at least 8 characters'),
+    confirmPassword: string().min(8, 'Password must be at least 8 characters'),
+}).superRefine(({ confirmPassword, password }, ctx) => {
+    if (confirmPassword !== password) {
+        ctx.addIssue({
+            code: "custom",
+            message: "Passwords must match",
+            path: ["confirmPassword"]
+        });
+    }
+});
+
+const validationSchema = toTypedSchema(signupSchema);
+
+export default defineComponent({
+    name: 'Signup',
     components: {
+        Button,
         InputDefault,
         InputPassword,
-        Button
     },
-})
-export default class Signup extends Vue {}
+    mounted() {
+        document.title = 'Sign up';
+    },
+    setup() {
+
+        const { handleSubmit } = useForm({
+            validationSchema,
+        });
+
+        const onSubmit = handleSubmit(values => {
+            console.log(values);
+        });
+
+        return {
+            handleSubmit,
+            onSubmit,
+            validationSchema,
+        };
+    },
+});
 </script>
 
 <style scoped lang="scss">
