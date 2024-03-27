@@ -10,6 +10,9 @@ class CustomUser(AbstractUser):
 
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     thumbnail = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    youtubeLink = models.URLField(max_length = 200, blank=True, null = True)
+    vkLink = models.URLField(max_length = 200, blank=True, null = True)
+    tgLink = models.URLField(max_length = 200, blank=True, null = True)
     
     def __str__(self):
         return self.username

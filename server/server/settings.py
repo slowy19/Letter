@@ -50,6 +50,19 @@ INSTALLED_APPS = [
 # Нужно для задания новой модели вместо стандартной
 AUTH_USER_MODEL  =  "accounts.CustomUser"
 
+# DJOSER = {
+#     'LOGIN_FIELD': 'login',
+#     'HIDE_USERS': False,
+# }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
