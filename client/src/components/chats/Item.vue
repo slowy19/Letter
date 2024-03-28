@@ -1,6 +1,6 @@
 <template>
     <div class="item" :class="{ active: isActive }" @click="handleClick">
-        <img src="@/assets/icons/avatar.png" alt="Avatar">
+        <img src="@/assets/images/avatar.png" alt="Avatar">
         <div class="text">
             <div class="textItem">
                 <span class="name">{{ item.name }}</span>

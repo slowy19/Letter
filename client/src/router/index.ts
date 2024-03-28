@@ -1,9 +1,11 @@
 import Chats from '@/views/Chats.vue'
 import Login from '@/views/Login.vue'
 import Signup from '@/views/Signup.vue'
-import Profile from '@/views/Profile.vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import NotFound from '@/views/NotFound.vue'
+import Profile from '@/views/profile/Profile.vue'
+import Photos from '@/views/profile/components/Photos.vue'
+import Documents from '@/views/profile/components/Documents.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,7 +26,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/profile',
     name: 'profile',
-    component: Profile
+    component: Profile,
+    children: [
+      {
+        path: '', 
+        component: Photos,
+      },
+      {
+        path: 'docs', 
+        component: Documents,
+      },
+    ],
   },
   {
     path: '/404', 

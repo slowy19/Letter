@@ -3,7 +3,7 @@
         <div class="left">
             <div class="leftHeader">
                 <div class="profile">
-                    <img src="@/assets/icons/avatar.png" alt="Profile" />
+                    <img src="@/assets/images/avatar.png" alt="Profile" />
                 </div>
                 <InputSearch placeholder="Search" />
             </div>

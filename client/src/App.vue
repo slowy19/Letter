@@ -19,6 +19,7 @@
     --form-placeholder-color: rgba(119, 119, 119, 1);
     --background-item: #d9d9d9;
     --background-scrollbar: rgba(217, 217, 217, 1);
+    --background-chats: rgba(85, 85, 85, 1);
 }
 
 body {
