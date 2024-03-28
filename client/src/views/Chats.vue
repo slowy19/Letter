@@ -7,7 +7,7 @@
                 </div>
                 <InputSearch placeholder="Search" />
             </div>
-            <div class="scrollbar">
+            <div class="scrollbar" ref="scrollbar">
                 <div class="items">
                     <Item
                         @click="setActive(item)"
@@ -83,10 +83,8 @@ export default defineComponent({
         }
     },
     mounted() {
-        // Call getChatList immediately on mount
         this.getChatList();
 
-        // Set up an interval to call getChatList every 5 seconds
         this.intervalId = setInterval(() => {
             this.getChatList();
         }, 5000);
@@ -95,6 +93,7 @@ export default defineComponent({
     },
     setup() {
         const active = ref(null);
+        // const scrollbar = ref<HTMLElement | null>(null);
 
         const setActive = (item: any) => {
             active.value = item;
@@ -114,9 +113,33 @@ export default defineComponent({
             window.removeEventListener('keydown', handleKeydown);
         });
 
+         // const handleScroll = () => {
+        //     if (scrollbar.value) {
+        //         if (scrollbar.value.scrollTop > 0) {
+        //             scrollbar.value.classList.add('scrollbar');
+        //         } else {
+        //             scrollbar.value.classList.remove('scrollbar');
+        //         }
+        //     }
+        // };
+
+        // onMounted(() => {
+        // scrollbar.value = document.querySelector('.scrollbar');
+        //     if (scrollbar.value) {
+        //         scrollbar.value.addEventListener('scroll', handleScroll);
+        //     }
+        // });
+
+        // onUnmounted(() => {
+        //     if (scrollbar.value) {
+        //         scrollbar.value.removeEventListener('scroll', handleScroll);
+        //     }
+        // });
+
+
         return {
             active,
-            // chatList,
+            // scrollbar,
             setActive,
         };
     },
