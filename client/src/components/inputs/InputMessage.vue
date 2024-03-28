@@ -39,7 +39,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .inputDiv {
-    background: #fff;
+    background: var(--white);
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -54,14 +54,14 @@ export default defineComponent({
     font-size: 16px;
     font-weight: 400;
     line-height: 44px;
-    color: #333;
+    color: var(--black);
     text-align: left;
 
         &::placeholder {
             font-size: 16px;
             font-weight: 400;
             line-height: 44px;
-            color: rgba(128, 128, 128, 1);
+            color: var(--gray);
         }
     }
 

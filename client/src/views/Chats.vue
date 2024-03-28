@@ -146,7 +146,7 @@ export default defineComponent({
             .profile {
                 width: 100%;
                 max-width: 65px;
-                background: #fff;
+                background: var(--white);
                 border-radius: 0 40px 40px 0;
                 display: flex;
                 align-items: center;
@@ -173,7 +173,7 @@ export default defineComponent({
                 background: transparent;
             }
             &::-webkit-scrollbar-thumb {
-                background: rgba(217, 217, 217, 1);
+                background: var(--background-scrollbar);
                 border-radius: 2px;
             }
 
@@ -210,7 +210,7 @@ export default defineComponent({
             .emptySpan {
                 font-size: 20px;
                 font-weight: 400;
-                color: #ddd;
+                color: var(--color-empty);
             }
         }
 
@@ -235,7 +235,7 @@ export default defineComponent({
                 .status {
                     font-size: 14px;
                     font-weight: 400;
-                    color: rgba(255, 101, 47, 1);
+                    color: var(--orange);
                     margin-top: 25px;
                 }
             }

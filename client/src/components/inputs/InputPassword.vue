@@ -74,7 +74,7 @@ export default defineComponent({
     font-size: 24px;
     font-weight: 400;
     line-height: 44px;
-    color: #fff;
+    color: var(--white);
     text-align: left;
     padding: 0 10px;
 
@@ -82,11 +82,11 @@ export default defineComponent({
             font-size: 24px;
             font-weight: 400;
             line-height: 44px;
-            color: rgba(119, 119, 119, 1);
+            color: var(--form-placeholder-color);
         }
 
         &.is-invalid {
-            border-bottom: 1px solid rgba(255, 68, 68, 1);
+            border-bottom: 1px solid var(--red);
         }
     }
 
@@ -102,7 +102,7 @@ export default defineComponent({
 }
 
 .error {
-    color: rgba(255, 68, 68, 1);
+    color: var(--red);
     text-align: left;
 }
 

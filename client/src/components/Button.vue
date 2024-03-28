@@ -20,12 +20,12 @@ export default defineComponent({
 .button {
     all: unset;
 
-    background: #fff;
+    background: var(--white);
     cursor: pointer;
     font-size: 28px;
     font-weight: 400;
     line-height: 52px;
-    color: rgba(51, 51, 51, 1);
+    color: var(--black);
     padding: 0 35px;
     box-shadow: var(--box-shadow);
     border-radius: 4px;

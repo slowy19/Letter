@@ -58,7 +58,7 @@ export default defineComponent({
 <style scoped lang="scss">
 
     .active {
-        background: rgba(255, 228, 0, 1) !important;
+        background: var(--yellow) !important;
     }
 
     .item {
@@ -69,11 +69,11 @@ export default defineComponent({
         // justify-content: space-between;
         align-items: center;
         padding: 10px 20px 10px 10px;
-        color: rgba(0, 0, 0, 1);
+        color: var(--black);
         width: 100%;
         cursor: pointer;
         transition: all .1s ease;
-        background: #d9d9d9;
+        background: var(--background-item);
 
         img {
             width: 60px;
@@ -102,7 +102,7 @@ export default defineComponent({
                 .date {
                     font-size: 16px;
                     font-weight: 400;
-                    color: rgba(128, 128, 128, 1);
+                    color: var(--gray);
                 }
 
                 .message {
@@ -113,8 +113,8 @@ export default defineComponent({
                 }
 
                 .count {
-                    background: rgba(255, 101, 47, 1);
-                    color: #fff;
+                    background: var(--orange);
+                    color: var(--white);
                     border-radius: 99px;
                     font-size: 14px;
                     font-weight: 400;

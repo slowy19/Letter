@@ -19,7 +19,7 @@ export default defineComponent({
     // box-shadow: var(--box-shadow);
     font-size: 16px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 1);
+    color: var(--black);
     text-align: left;
     padding: 14px 25px;
     border-radius: 40px;
@@ -28,7 +28,7 @@ export default defineComponent({
     &::placeholder {
         font-size: 16px;
         font-weight: 400;
-        color: rgba(128, 128, 128, 1);
+        color: var(--gray);
     }
 }
 </style>

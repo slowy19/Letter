@@ -26,14 +26,14 @@ import { defineComponent } from 'vue';
         justify-content: center;
 
         h1 {
-            color: rgba(221, 221, 221, 1);
+            color: var(--color-not-found-h1);
             font-size: 200px;
             font-weight: 400;
             line-height: 0;
         }
 
         span {
-            color: rgba(119, 119, 119, 1);
+            color: var(--form-placeholder-color);
             font-size: 32px;
             font-weight: 400;
         }
