@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <h1 class="title">Letter</h1>
-        <Form @submit="onSubmit" :validation-schema="validationSchema" as="div" class="form">
+        <Form @submit="onSubmit" @keyup.enter="onSubmit" :validation-schema="validationSchema" as="div" class="form">
             <div class="inputs">
                 <InputDefault name="login" error="login" placeholder="Login" />
                 <InputPassword name="password" error="password" placeholder="Password" />
