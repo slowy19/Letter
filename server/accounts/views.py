@@ -5,9 +5,8 @@ from rest_framework.views import APIView
 from .serializers import CustomUserSerializer
 from django.views.decorators.csrf import csrf_exempt
 
-class Login(APIView):
-    @csrf_exempt
-    def post(self, request):
+class Account(APIView):
+    def signup(self, request):
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

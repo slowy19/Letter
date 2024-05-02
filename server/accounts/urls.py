@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns = [
     # path('login/', Login),
-    path('signup/', Login.post),
+    path('signup/', Account.signup),
     
     # API
 ]

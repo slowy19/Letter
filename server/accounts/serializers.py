@@ -8,11 +8,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'username', 
             'login', 
             'password', 
-            'avatar', 
-            'thumbnail', 
-            'youtubeLink', 
-            'vkLink', 
-            'tgLink',
             ]
         extra_kwargs = {'password': {'write_only': True}}
 
