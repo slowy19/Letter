@@ -27,7 +27,7 @@ import { useForm } from 'vee-validate';
 
 const loginSchema = object({
     login: string().min(3),
-    password: string().min(8, 'Password must be at least 8 characters'),
+    password: string(),
 })
 
 const validationSchema = toTypedSchema(loginSchema);

@@ -45,7 +45,7 @@ import InputSearch from '@/components/inputs/InputSearch.vue';
 import Item from '@/components/chats/Item.vue';
 import InputMessage from '@/components/inputs/InputMessage.vue';
 import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
-import axios from 'axios'
+import axios from 'axios';
 import { IChatItem } from '@/interfaces';
 
 export default defineComponent({
@@ -159,6 +159,7 @@ export default defineComponent({
         border-right: 1px solid transparent;
         box-shadow: var(--box-shadow);
         height: 100vh;
+        min-width: 200px;
 
         .leftHeader {
             display: flex;

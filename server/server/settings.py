@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'chats',
     'accounts',
+    'csrf',
 ]
 
 # Нужно для задания новой модели вместо стандартной
@@ -64,6 +65,10 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
+
+CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
 ]
 
